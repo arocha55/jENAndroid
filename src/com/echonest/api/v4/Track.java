@@ -105,6 +105,14 @@ public class Track extends ENItem {
     }
 
     /**
+     * Set the analysis status for the track
+     *
+     */
+    public void setStatus( AnalysisStatus status ) {
+        currentStatus = status;
+    }
+
+    /**
      * Gets the title of the track
      *
      * @return the title of the track

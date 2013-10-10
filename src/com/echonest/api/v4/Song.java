@@ -222,6 +222,7 @@ public class Song extends ENItem {
             }
             if (map != null) {
                 track = new Track(en, map);
+                track.setStatus( Track.AnalysisStatus.COMPLETE );
                 if( !trackMap.containsKey(idSpace) )
                     trackMap.put(idSpace, track);
             }
