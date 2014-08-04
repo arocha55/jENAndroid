@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Represents and Echo Nest Artist
  * 
@@ -743,5 +747,25 @@ public class Artist extends ENItem {
             terms.add(term);
         }
         return terms;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<String> getGenres() throws EchoNestException {
+    	fetchBucket("genre");
+    	
+    	List<String> genres = new ArrayList<String>();
+    	
+    	if(data.containsKey("genres")) {
+    		
+    		List genreList = (List) getObject("genres");
+    		for (int i = 0; i < genreList.size(); i++) {
+                Map map = (Map) genreList.get(i);
+                MQuery mq = new MQuery(map);
+                String genreName = mq.getString("name");
+                genres.add(genreName);
+            }
+    	}
+    	
+        return genres;
     }
 }

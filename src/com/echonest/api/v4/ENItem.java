@@ -151,6 +151,9 @@ public class ENItem {
             // special case for foreign_ids
             extractForeignIDs(map);
             extractTracks(map);
+            if(bucketName.equals("genre")) {
+            	bucketName = "genres";
+            }
             Object value = map.get(bucketName);
             if (value != null) {
                 data.put(bucketName, value);
